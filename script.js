@@ -1,9 +1,17 @@
 let colorlist = ['gold', 'yellow', 'turquoise', 'red'];
 let screen = 0;
-let button;
+let onePlayerButton;
+let twoPlayerButton;
+let threePlayerButton;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+	threePlayerButton = createButton('3 Players');
+  threePlayerButton.position(width / 2, height / 2 + 50);
+	twoPlayerButton = createButton('2 Players');
+  twoPlayerButton.position(width / 2, height / 2);
+	onePlayerButton = createButton('1 Player');
+  onePlayerButton.position(width / 2, height / 2 - 50);
 }
 
 function draw() {
@@ -19,9 +27,18 @@ function draw() {
 function startingScreen() {
   background(150,150,150);
   fill(0,0,0);
-  button = createButton('1 Player');
-  button.position(width / 2, height / 2);
-  button.mousePressed(gameScreen);
+  onePlayerButton.mousePressed(() => {
+    screen = 1
+		hideButtons();
+  });
+  twoPlayerButton.mousePressed(() => {
+    screen = 1
+		hideButtons();
+  });
+  threePlayerButton.mousePressed(() => {
+		screen = 1
+		hideButtons();
+	});
 }
 
 function gameScreen() {
@@ -30,4 +47,10 @@ function gameScreen() {
 
 function endScreen() {
   background(100,50,50);
+}
+
+function hideButtons() {
+	onePlayerButton.hide();
+  twoPlayerButton.hide();
+  threePlayerButton.hide();
 }
