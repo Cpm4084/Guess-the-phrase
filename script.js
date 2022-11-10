@@ -1,4 +1,5 @@
 let phrases = ['gold', 'yellow', 'turquoise', 'red'];
+let guessOptions = ['constant', 'constant', 'letter', 'letter', 'letter', 'letter', 'two constants', 'two constants', 'two letters', 'nothing'];
 let screen = 0;
 let fourPlayerButton;
 let twoPlayerButton;
@@ -6,6 +7,7 @@ let threePlayerButton;
 let players;
 let guess;
 let curPhrase;
+let curGuesses;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -70,8 +72,24 @@ function startingScreen() {
 
 function gameScreen() {
   background(50,50,50);
-  text(curPhrase, 100, 100);
-	text(guess.join(" "), 100, 150)
+  textAlign(CENTER);
+  //text underscores replacing letters
+	text(guess.join(" "), width / 2, height / 2)
+
+let columns = 1
+
+  //text players
+  for(let i = 0; i < players; i++) {
+		text("player" + i,width - 100 + (i % columns) * 200, 60 + Math.floor(i / columns) * 30);
+
+    text("Your Guesses", 50, 60)
+
+    for(let i = 0; 1 < players; i++) {
+      	let index = Math.floor(random(0, guessOptions.length));
+	      curGuesses = guessOptions[index];
+      text(curGuesses, 50, 90)
+    }
+	}
 }
 
 function endScreen() {
