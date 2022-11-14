@@ -84,11 +84,11 @@ let columns = 1
 
     text("Your Guesses", 50, 60)
 
-    for(let i = 0; 1 < players; i++) {
-      	let index = Math.floor(random(0, guessOptions.length));
-	      curGuesses = guessOptions[index];
-      text(curGuesses, 50, 90)
-    }
+    //for(let i = 0; 1 < players; i++) {
+      	//let index = Math.floor(random(0, guessOptions.length));
+	      //curGuesses = guessOptions[index];
+      //text(curGuesses, 50, 90)
+    //}
 	}
 }
 
