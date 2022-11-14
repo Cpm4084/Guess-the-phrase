@@ -79,7 +79,7 @@ function gameScreen() {
 let columns = 1
 
   //text players
-  for(let i = 0; i < players; i++) {
+  for(let i = 1; i-1 < players; i++) {
 		text("player" + i,width - 100 + (i % columns) * 200, 60 + Math.floor(i / columns) * 30);
 
     text("Your Guesses", 50, 60)
