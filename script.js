@@ -115,5 +115,5 @@ function keyPressed() {
 				guess[i] = key;
 			}
 		}
-  }
+  } 
 }
