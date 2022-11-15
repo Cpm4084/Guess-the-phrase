@@ -8,6 +8,9 @@ let players;
 let guess;
 let curPhrase;
 let curGuesses;
+let playerTurn = 1;
+let guessesDefined = false;
+let wrongGuesses;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -21,13 +24,16 @@ function setup() {
 	twoPlayerButton = createButton('2 Players');
   twoPlayerButton.position(width / 2, height / 2 - 50);
   selectRandomPhrase();
+	print('guessesDefined = ' + guessesDefined);
+	print('playerTurn = ' + playerTurn);
 }
 
 function selectRandomPhrase() {
 	let index = Math.floor(random(0, phrases.length));
-	print("index is ", index);
+	//print("index is ", index);
 	curPhrase = phrases[index];
 	guess = [];
+  wrongGuesses = [];
 	for(let i = 0; i < curPhrase.length; i++) {
 		guess.push(curPhrase[i] == " " ? " " : "_")
 		print(i, guess[i]);
@@ -41,6 +47,8 @@ function draw() {
   } else if (screen == 1) {
     //game screen
     gameScreen();
+    //players guess
+    playerGuess();
   } else if (screen == 2) {
     //end screen - might not need
     endScreen();
@@ -75,21 +83,23 @@ function gameScreen() {
   textAlign(CENTER);
   //text underscores replacing letters
 	text(guess.join(" "), width / 2, height / 2)
-
+  text(wrongGuesses.join(" "), width / 2, height / 2 - 250);
+	text(curGuesses, 50, 90) ;
 let columns = 1
 
   //text players
   for(let i = 1; i-1 < players; i++) {
-		text("player" + i,width - 100 + (i % columns) * 200, 60 + Math.floor(i / columns) * 30);
-
-    text("Your Guesses", 50, 60)
+		text("player" + i,width - 100 + (i % columns) * 200, 60 +   Math.floor(i / columns) * 30);
+  }
+  textAlign(LEFT);
+  text("player" + playerTurn, 30, 30);
+  text("Your Guesses", 30, 60);
 
     //for(let i = 0; 1 < players; i++) {
       	//let index = Math.floor(random(0, guessOptions.length));
 	      //curGuesses = guessOptions[index];
       //text(curGuesses, 50, 90)
     //}
-	}
 }
 
 function endScreen() {
@@ -104,16 +114,42 @@ function hideButtons() {
 }
 
 function keyPressed() {
-  if (screen == 1 && key >= 'a' && key <= 'z') { 
+  if (screen == 1 && key >= 'a' && key <= 'z' && guessesDefined) { 
 		print("You guessed", key);
 		
 		// Find all instances of key in curPhrase
 		let result = [];
-		for(var i=0; i < curPhrase.length; i++) {
+		for(let i=0; i < curPhrase.length; i++) {
     	if (curPhrase[i] === key) {
 				result.push(i);
 				guess[i] = key;
 			}
 		}
-  } 
+
+      if (result.length > 0) {
+			// we found a match
+			print("Found matches at indices", result);
+		}
+		else if (wrongGuesses.includes(key)) {
+			print("You already guessed that!");
+		}
+		else {
+			wrongGuesses.push(key);
+			print("NO MATCH!");
+		}
+  }
+}
+
+function playerGuess() {
+  if(playerTurn = 1) {
+    randomGuess();
+  }
+}
+
+function randomGuess() {
+  if(!guessesDefined) {
+   let guessIndex = Math.floor(random(0, guessOptions.length));
+	    curGuesses = guessOptions[guessIndex];
+    guessesDefined = true;
+  }
 }
