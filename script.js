@@ -12,6 +12,11 @@ let playerTurn = 1;
 let guessesDefined = false;
 let wrongGuesses;
 let guessCount = 0;
+let matches;
+let playerOneScore;
+let playerTwoScore;
+let playerThreeScore;
+let playerFourScore;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -120,6 +125,8 @@ function keyPressed() {
     	if (curPhrase[i] === key) {
 				result.push(i);
 				guess[i] = key;
+        matches++;
+        print(matches);
 			}
 		}
     
@@ -135,7 +142,22 @@ function keyPressed() {
 			wrongGuesses.push(key);
 			print("NO MATCH!");
     }
-      
+      if (playerTurn == 1) {
+        playerOneScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 2) {
+        playerTwoScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 3) {
+        playerThreeScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 4) {
+        playerFourScore += (1 * matches);
+        matches = 0;
+      }
       playerTurn++;
         if (playerTurn > players) {
           playerTurn = 1;
@@ -151,6 +173,8 @@ function keyPressed() {
     	if (curPhrase[i] === key) {
 				result.push(i);
 				guess[i] = key;
+        matches++;
+        print(matches);
 			}
 		}
     
@@ -166,7 +190,22 @@ function keyPressed() {
 			wrongGuesses.push(key);
 			print("NO MATCH!");
     }
-      
+      if (playerTurn == 1) {
+        playerOneScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 2) {
+        playerTwoScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 3) {
+        playerThreeScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 4) {
+        playerFourScore += (1 * matches);
+        matches = 0;
+      }
       guessCount++;
       if (guessCount % 2 == 0) {
         playerTurn++;
@@ -187,6 +226,8 @@ function keyPressed() {
     	if (curPhrase[i] === key) {
 				result.push(i);
 				guess[i] = key;
+        matches++;
+        print(matches);
 			}
 		}
     
@@ -202,6 +243,22 @@ function keyPressed() {
 			wrongGuesses.push(key);
 			print("NO MATCH!");
 		}
+      if (playerTurn == 1) {
+        playerOneScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 2) {
+        playerTwoScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 3) {
+        playerThreeScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 4) {
+        playerFourScore += (1 * matches);
+        matches = 0;
+      }
       playerTurn++;
         if (playerTurn > players) {
           playerTurn = 1;
@@ -218,6 +275,8 @@ function keyPressed() {
     	if (curPhrase[i] === key) {
 				result.push(i);
 				guess[i] = key;
+        matches++;
+        print(matches);
 			}
 		}
     
@@ -233,6 +292,22 @@ function keyPressed() {
 			wrongGuesses.push(key);
 			print("NO MATCH!");
 		}
+      if (playerTurn == 1) {
+        playerOneScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 2) {
+        playerTwoScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 3) {
+        playerThreeScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 4) {
+        playerFourScore += (1 * matches);
+        matches = 0;
+      }
       guessCount++;
       if (guessCount % 2 == 0) {
         playerTurn++;
