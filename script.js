@@ -13,10 +13,10 @@ let guessesDefined = false;
 let wrongGuesses;
 let guessCount = 0;
 let matches;
-let playerOneScore;
-let playerTwoScore;
-let playerThreeScore;
-let playerFourScore;
+let playerOneScore = 0;
+let playerTwoScore = 0;
+let playerThreeScore = 0;
+let playerFourScore = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -92,12 +92,30 @@ function gameScreen() {
   text(wrongGuesses.join(" "), width / 2, height / 2 + 20);
   textAlign(LEFT);
 	text(curGuesses, 30, 90) ;
-let columns = 1
 
   //text players
   for(let i = 1; i-1 < players; i++) {
-		text("player" + i,width - 100 + (i % columns) * 200, 60 +   Math.floor(i / columns) * 30);
+		text("player" + i,width - 100, 10 + i * 30);
   }
+
+  for(let i = 1; i-1 < players; i++) {
+    switch (i) {
+      case 1:
+        text(playerOneScore, width - 50, 10 + i * 30);
+        break;
+      case 2:
+        text(playerTwoScore, width - 50, 10 + i * 30);
+        break;
+      case 3:
+        text(playerThreeScore, width - 50, 10 + i * 30);
+        break;
+      case 4:
+        text(playerFourScore, width - 50, 10 + i * 30);
+        break;
+      default:
+    }
+  }
+  
   textAlign(LEFT);
   text("player" + playerTurn, 30, 30);
   text("Your Guesses", 30, 60);
@@ -136,11 +154,13 @@ function keyPressed() {
 			print("Found matches at indices", result);
 		}
 		else if (wrongGuesses.includes(key)) {
-			print("You already guessed that!");
+			print("You already guessed that");
+      matches--;
 		}
 		else {
 			wrongGuesses.push(key);
 			print("NO MATCH!");
+      matches--;
     }
       if (playerTurn == 1) {
         playerOneScore += (1 * matches);
@@ -185,10 +205,12 @@ function keyPressed() {
 		}
 		else if (wrongGuesses.includes(key)) {
 			print("You already guessed that!");
+      matches--;
 		}
 		else {
 			wrongGuesses.push(key);
 			print("NO MATCH!");
+      matches--;
     }
       if (playerTurn == 1) {
         playerOneScore += (1 * matches);
@@ -238,10 +260,12 @@ function keyPressed() {
 		}
 		else if (wrongGuesses.includes(key)) {
 			print("You already guessed that!");
+      matches--;
 		}
 		else {
 			wrongGuesses.push(key);
 			print("NO MATCH!");
+      matches--;
 		}
       if (playerTurn == 1) {
         playerOneScore += (1 * matches);
@@ -287,10 +311,12 @@ function keyPressed() {
 		}
 		else if (wrongGuesses.includes(key)) {
 			print("You already guessed that!");
+      matches--;
 		}
 		else {
 			wrongGuesses.push(key);
 			print("NO MATCH!");
+      matches--;
 		}
       if (playerTurn == 1) {
         playerOneScore += (1 * matches);
