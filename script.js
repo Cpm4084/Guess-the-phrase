@@ -138,6 +138,7 @@ function hideButtons() {
 }
 
 function keyPressed() {
+  //Letter
   if (curGuesses == guessOptions[2,3,4,5] && key >= 'a' && key <= 'z' && guessesDefined) { 
 		print("You guessed", key);
 		
@@ -189,6 +190,7 @@ function keyPressed() {
         }
        guessesDefined = false;
   }
+  //two letters
     if (curGuesses == guessOptions[8] && key >= 'a' && key <= 'z' && guessesDefined) { 
 		print("You guessed", key);
 		
@@ -242,7 +244,7 @@ function keyPressed() {
           playerTurn = 1;
         }
   }
-    
+    //constant
     else if (curGuesses == guessOptions[0,1] && key >= 'a' && key <= 'z' && key != 'a' && key != 'e' && key != 'i' && key != 'o' && key != 'u' && guessesDefined) { 
 		
       print("You guessed", key);
@@ -294,6 +296,7 @@ function keyPressed() {
         }
        guessesDefined = false;
   }
+      //two constants
     else if (curGuesses == guessOptions[6,7] && key >= 'a' && key <= 'z' && key != 'a' && key != 'e' && key != 'i' && key != 'o' && key != 'u' && guessesDefined) { 
 		
       print("You guessed", key);
@@ -301,7 +304,12 @@ function keyPressed() {
 		// Find all instances of key in curPhrase
 		let result = [];
 		for(let i=0; i < curPhrase.length; i++) {
-    	if (curPhrase[i] === key) {
+      if (guess[i] === key) {
+        result.push(i);
+        matches--;
+        print("You already guessed that!");
+      }
+    	else if (curPhrase[i] === key) {
 				result.push(i);
 				guess[i] = key;
         matches++;
@@ -348,6 +356,7 @@ function keyPressed() {
           playerTurn = 1;
     }
   }
+      //nothing
   else if (curGuesses == guessOptions[9] && key >= 'a' && key <= 'z') {
       playerTurn++;
         if (playerTurn > players) {
