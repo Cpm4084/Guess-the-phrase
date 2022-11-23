@@ -17,6 +17,7 @@ let playerOneScore = 0;
 let playerTwoScore = 0;
 let playerThreeScore = 0;
 let playerFourScore = 0;
+let guessPhraseButton;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -91,7 +92,10 @@ function gameScreen() {
 	text(guess.join(" "), width / 2, height / 2)
   text(wrongGuesses.join(" "), width / 2, height / 2 + 20);
   textAlign(LEFT);
-	text(curGuesses, 30, 90) ;
+	text(curGuesses, 30, 90);
+  //create guess phrase button
+  guessPhraseButton = createButton('Guess a phrase')
+  guessPhraseButton.position(width - 150, height - 75); 
 
   //text players
   for(let i = 1; i-1 < players; i++) {
