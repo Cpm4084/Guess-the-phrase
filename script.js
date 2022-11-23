@@ -96,6 +96,7 @@ function gameScreen() {
   //create guess phrase button
   guessPhraseButton = createButton('Guess a phrase')
   guessPhraseButton.position(width - 150, height - 75); 
+  guessPhraseButton.mousePressed();
 
   //text players
   for(let i = 1; i-1 < players; i++) {
