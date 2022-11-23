@@ -12,7 +12,7 @@ let playerTurn = 1;
 let guessesDefined = false;
 let wrongGuesses;
 let guessCount = 0;
-let matches;
+let matches = 0;
 let playerOneScore = 0;
 let playerTwoScore = 0;
 let playerThreeScore = 0;
@@ -166,6 +166,7 @@ function keyPressed() {
 			print("NO MATCH!");
       matches--;
     }
+      
       if (playerTurn == 1) {
         playerOneScore += (1 * matches);
         matches = 0;
