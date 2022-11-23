@@ -145,7 +145,12 @@ function keyPressed() {
 		// Find all instances of key in curPhrase
 		let result = [];
 		for(let i=0; i < curPhrase.length; i++) {
-    	if (curPhrase[i] === key) {
+    	if (guess[i] === key) {
+        result.push(i);
+        matches--;
+        print("You already guessed that!");
+      }
+    	else if (curPhrase[i] === key) {
 				result.push(i);
 				guess[i] = key;
         matches++;
@@ -197,7 +202,12 @@ function keyPressed() {
 		// Find all instances of key in curPhrase
 		let result = [];
 		for(let i=0; i < curPhrase.length; i++) {
-    	if (curPhrase[i] === key) {
+    	if (guess[i] === key) {
+        result.push(i);
+        matches--;
+        print("You already guessed that!");
+      }
+    	else if (curPhrase[i] === key) {
 				result.push(i);
 				guess[i] = key;
         matches++;
@@ -252,7 +262,12 @@ function keyPressed() {
 		// Find all instances of key in curPhrase
 		let result = [];
 		for(let i=0; i < curPhrase.length; i++) {
-    	if (curPhrase[i] === key) {
+    	if (guess[i] === key) {
+        result.push(i);
+        matches--;
+        print("You already guessed that!");
+      }
+    	else if (curPhrase[i] === key) {
 				result.push(i);
 				guess[i] = key;
         matches++;
