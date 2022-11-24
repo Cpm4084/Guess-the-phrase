@@ -144,7 +144,10 @@ function guessPhrase() {
 }
 
 function guessAPhrase {
-  
+  const phraseGuess = input.value();
+  if (phraseGuess = curphrase) {
+    
+  }
 }
 
 function endScreen() {
