@@ -33,6 +33,9 @@ function setup() {
   selectRandomPhrase();
 	print('guessesDefined = ' + guessesDefined);
 	print('playerTurn = ' + playerTurn);
+  guessPhraseButton = createButton('Guess a phrase')
+  guessPhraseButton.position(width - 150, height - 75);
+  guessPhraseButton.hide();
 }
 
 function selectRandomPhrase() {
@@ -79,8 +82,8 @@ function startingScreen() {
   });
   //switch to game with four players
   fourPlayerButton.mousePressed(() => {
-		screen = 1
-    players = 4
+		screen = 1;
+    players = 4;
 		hideButtons();
 	});
 }
@@ -93,11 +96,12 @@ function gameScreen() {
   text(wrongGuesses.join(" "), width / 2, height / 2 + 20);
   textAlign(LEFT);
 	text(curGuesses, 30, 90);
-  //create guess phrase button
-  guessPhraseButton = createButton('Guess a phrase')
-  guessPhraseButton.position(width - 150, height - 75); 
-  guessPhraseButton.mousePressed();
 
+  guessPhraseButton.mousePressed(() => {
+    guessPhrase();
+  });
+  guessPhraseButton.show();
+  
   //text players
   for(let i = 1; i-1 < players; i++) {
 		text("player" + i,width - 100, 10 + i * 30);
@@ -125,6 +129,22 @@ function gameScreen() {
   text("player" + playerTurn, 30, 30);
   text("Your Guesses", 30, 60);
 
+}
+
+let input, submitButton, greeting;
+function guessPhrase() {
+  print('Guess a phrase');
+  input = createInput();
+  input.position(width / 3, height - 150);
+  submitButton = createButton('submit');
+  SubmitButton.position(input.x + input.width, height - 150);
+  submitButton.mousePressed(guessAPhrase);
+  greeting = createElement('h2', 'Guess the phrase');
+  greeting.position(width / 3, height - 200);
+}
+
+function guessAPhrase {
+  
 }
 
 function endScreen() {
