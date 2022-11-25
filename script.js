@@ -171,10 +171,25 @@ function guessAPhrase() {
         playerFourScore += (1 * matches);
         matches = 0;
       }
-
+      guessingPhrase = false;
+    guessInput.hide();
+    greeting.hide();
+    submitButton.hide();
+    playerTurn++;
+        if (playerTurn > players) {
+          playerTurn = 1;
+        }
   }
   else {
     print('Incorrect');
+    guessingPhrase = false;
+    guessInput.hide();
+    greeting.hide();
+    submitButton.hide();
+    playerTurn++;
+        if (playerTurn > players) {
+          playerTurn = 1;
+        }
   }
 }
 
