@@ -150,7 +150,7 @@ function guessAPhrase() {
   const phraseGuess = guessInput.value();
   if (phraseGuess == curPhrase) {
     for (let i = 0; i < curPhrase.length; i++) {
-     if (curPhrase[i] === '_') {
+     if (guess[i] === '_') {
 			guess[i] = curPhrase[i];
       matches++;
      }
