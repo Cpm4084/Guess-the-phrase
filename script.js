@@ -1,4 +1,4 @@
-let phrases = ['gold', 'yellow', 'turquoise', 'red'];
+let phrases = ['cameron likes yigit', 'bear like beer', 'bee makes honey', 'alex is sick', 'bird is flying', 'there is no try', 'canada wins world cup', 'when doves cry', 'dont get this wrong', 'you are the chosen one'];
 let guessOptions = ['constant', 'constant', 'letter', 'letter', 'letter', 'letter', 'two constants', 'two constants', 'two letters', 'nothing'];
 let screen = 0;
 let fourPlayerButton;
@@ -89,7 +89,7 @@ function startingScreen() {
 }
 
 function gameScreen() {
-  background(50,50,50);
+  background(150,70,50);
   textAlign(CENTER);
   //text underscores replacing letters
 	text(guess.join(" "), width / 2, height / 2)
@@ -136,14 +136,14 @@ function guessPhrase() {
   print('Guess a phrase');
   guessingPhrase = true;
   guessInput = createInput();
-  guessInput.position(width / 3, height - 150);
+  guessInput.position(width - 500, height - 75);
   submitButton = createButton('submit');
-  submitButton.position(guessInput.x + guessInput.width, height - 150);
+  submitButton.position(guessInput.x + guessInput.width, height - 75);
   submitButton.mousePressed(() => {
     guessAPhrase();
   });
   greeting = createElement('h2', 'Guess the phrase');
-  greeting.position(width / 3, height - 200);
+  greeting.position(width - 500, height - 125);
 }
 
 function guessAPhrase() {
