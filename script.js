@@ -131,22 +131,50 @@ function gameScreen() {
 
 }
 
-let input, submitButton, greeting;
+let guessInput, submitButton, greeting, guessingPhrase = false;
 function guessPhrase() {
   print('Guess a phrase');
-  input = createInput();
-  input.position(width / 3, height - 150);
+  guessingPhrase = true;
+  guessInput = createInput();
+  guessInput.position(width / 3, height - 150);
   submitButton = createButton('submit');
-  SubmitButton.position(input.x + input.width, height - 150);
-  submitButton.mousePressed(guessAPhrase);
+  submitButton.position(guessInput.x + guessInput.width, height - 150);
+  submitButton.mousePressed(() => {
+    guessAPhrase();
+  });
   greeting = createElement('h2', 'Guess the phrase');
   greeting.position(width / 3, height - 200);
 }
 
-function guessAPhrase {
-  const phraseGuess = input.value();
-  if (phraseGuess = curphrase) {
-    
+function guessAPhrase() {
+  const phraseGuess = guessInput.value();
+  if (phraseGuess == curPhrase) {
+    for (let i = 0; i < curPhrase.length; i++) {
+     if (curPhrase[i] === '_') {
+			guess[i] = curPhrase[i];
+      matches++;
+     }
+    }
+      if (playerTurn == 1) {
+        playerOneScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 2) {
+        playerTwoScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 3) {
+        playerThreeScore += (1 * matches);
+        matches = 0;
+      }
+      else if (playerTurn == 4) {
+        playerFourScore += (1 * matches);
+        matches = 0;
+      }
+
+  }
+  else {
+    print('Incorrect');
   }
 }
 
@@ -163,7 +191,7 @@ function hideButtons() {
 
 function keyPressed() {
   //Letter
-  if (curGuesses == guessOptions[2,3,4,5] && key >= 'a' && key <= 'z' && guessesDefined) { 
+  if (curGuesses == guessOptions[2,3,4,5] && key >= 'a' && key <= 'z' && guessesDefined && !guessingPhrase) { 
 		print("You guessed", key);
 		
 		// Find all instances of key in curPhrase
@@ -220,7 +248,7 @@ function keyPressed() {
        guessesDefined = false;
   }
   //two letters
-    if (curGuesses == guessOptions[8] && key >= 'a' && key <= 'z' && guessesDefined) { 
+    if (curGuesses == guessOptions[8] && key >= 'a' && key <= 'z' && guessesDefined && !guessingPhrase) { 
 		print("You guessed", key);
 		
 		// Find all instances of key in curPhrase
@@ -279,7 +307,7 @@ function keyPressed() {
         }
   }
     //constant
-    else if (curGuesses == guessOptions[0,1] && key >= 'a' && key <= 'z' && key != 'a' && key != 'e' && key != 'i' && key != 'o' && key != 'u' && guessesDefined) { 
+    else if (curGuesses == guessOptions[0,1] && key >= 'a' && key <= 'z' && key != 'a' && key != 'e' && key != 'i' && key != 'o' && key != 'u' && guessesDefined && !guessingPhrase) { 
 		
       print("You guessed", key);
 		
@@ -336,7 +364,7 @@ function keyPressed() {
        guessesDefined = false;
   }
       //two constants
-    else if (curGuesses == guessOptions[6,7] && key >= 'a' && key <= 'z' && key != 'a' && key != 'e' && key != 'i' && key != 'o' && key != 'u' && guessesDefined) { 
+    else if (curGuesses == guessOptions[6,7] && key >= 'a' && key <= 'z' && key != 'a' && key != 'e' && key != 'i' && key != 'o' && key != 'u' && guessesDefined && !guessingPhrase) { 
 		
       print("You guessed", key);
 		
@@ -396,7 +424,7 @@ function keyPressed() {
     }
   }
       //nothing
-  else if (curGuesses == guessOptions[9] && key >= 'a' && key <= 'z') {
+  else if (curGuesses == guessOptions[9] && key >= 'a' && key <= 'z' && !guessingPhrase) {
       playerTurn++;
         if (playerTurn > players) {
           playerTurn = 1;
